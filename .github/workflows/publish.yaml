@@ -35,8 +35,8 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
-          context: "{{defaultContext}}"
+          context: "${{ github.event.inputs.image-folder }}"
           push: true
           tags: public.ecr.aws/kubefirst/${{ github.event.inputs.image-folder }}:${{ github.event.inputs.image-tag }}
