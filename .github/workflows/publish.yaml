@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Build info
+        run: |
+          echo "image folder ${{ github.event.inputs.image-folder }}"
+          echo "image tag ${{ github.event.inputs.image-tag }}"
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
