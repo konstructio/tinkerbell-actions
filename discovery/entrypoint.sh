@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo $K1_COLONY_API_URL
-echo $K1_COLONY_HARDWARE_ID
+logger $K1_COLONY_API_URL
+logger $K1_COLONY_HARDWARE_ID
 
 # Function to get architecture info
 get_architecture_info() {
@@ -37,25 +37,25 @@ get_interface_info() {
 
 # Main function to generate JSON output
 generate_json() {
-    architecture_info=$(get_architecture_info)
-    # cpu_info=$(get_cpu_info)
+    # architecture_info=$(get_architecture_info)
+    cpu_info=$(get_cpu_info)
     # mem_info=$(get_mem_info)
     # disk_info=$(get_disk_info)
     # interface_info=$(get_interface_info)
 
-    json_output=$(cat <<EOF
-{
-    "cpuArchitecture": "$architecture_info",
-    "cpuCores": "$cpu_info",
-    "memory": "$mem_info",
-    "blockDevices": $disk_info,
-    "interfaceInfo": $interface_info
-}
-EOF
-)
+#     json_output=$(cat <<EOF
+# {
+#     "cpuArchitecture": "$architecture_info",
+#     "cpuCores": "$cpu_info",
+#     "memory": "$mem_info",
+#     "blockDevices": $disk_info,
+#     "interfaceInfo": $interface_info
+# }
+# EOF
+# )
 
-echo "DEBUG"
-echo "$json_output"
+logger "DEBUG"
+logger "$cpu_info"
 
 # curl --request PUT \
 #   --url "${COLONY_API_URL}/api/v1/mock/hardwares/${COLONY_HARDWARE_ID}" \
@@ -63,7 +63,7 @@ echo "$json_output"
 #   --header 'Content-Type: application/json' \
 #   --data "$json_output"
 
-# }
+}
 
 # Call the main function to generate JSON output
 generate_json
