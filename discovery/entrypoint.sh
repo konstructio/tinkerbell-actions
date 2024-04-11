@@ -38,10 +38,10 @@ get_interface_info() {
 # Main function to generate JSON output
 generate_json() {
     architecture_info=$(get_architecture_info)
-    cpu_info=$(get_cpu_info)
-    mem_info=$(get_mem_info)
-    disk_info=$(get_disk_info)
-    interface_info=$(get_interface_info)
+    # cpu_info=$(get_cpu_info)
+    # mem_info=$(get_mem_info)
+    # disk_info=$(get_disk_info)
+    # interface_info=$(get_interface_info)
 
     json_output=$(cat <<EOF
 {
@@ -57,13 +57,13 @@ EOF
 echo "DEBUG"
 echo "$json_output"
 
-curl --request PUT \
-  --url "${COLONY_API_URL}/api/v1/mock/hardwares/${COLONY_HARDWARE_ID}" \
-  --header 'Accept: application/json' \
-  --header 'Content-Type: application/json' \
-  --data "$json_output"
+# curl --request PUT \
+#   --url "${COLONY_API_URL}/api/v1/mock/hardwares/${COLONY_HARDWARE_ID}" \
+#   --header 'Accept: application/json' \
+#   --header 'Content-Type: application/json' \
+#   --data "$json_output"
 
-}
+# }
 
 # Call the main function to generate JSON output
 generate_json
