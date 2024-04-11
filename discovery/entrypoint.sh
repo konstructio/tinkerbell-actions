@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo $K1_COLONY_API_URL
+echo $K1_COLONY_HARDWARE_ID
+
 # Function to get architecture info
 get_architecture_info() {
     architecture_info=$(lscpu | grep Architecture: | awk '{print $2}')
@@ -51,13 +54,14 @@ generate_json() {
 EOF
 )
 
+echo "DEBUG"
 echo "$json_output"
 
-# curl --request PUT \
-#   --url "${COLONY_API_URL}/api/v1/mock/hardwares/${COLONY_HARDWARE_ID}" \
-#   --header 'Accept: application/json' \
-#   --header 'Content-Type: application/json' \
-#   --data "$json_output"
+curl --request PUT \
+  --url "${COLONY_API_URL}/api/v1/mock/hardwares/${COLONY_HARDWARE_ID}" \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --data "$json_output"
 
 }
 
