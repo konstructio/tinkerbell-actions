@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo "hello world"
+logger "hello world"
