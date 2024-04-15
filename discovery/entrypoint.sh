@@ -37,7 +37,7 @@ get_mem_info() {
 
 # Function to get physical disk info
 get_disk_info() {
-    disk_info=$(lsblk -o NAME,TYPE,SIZE | grep disk | awk 'NR>1{if (NR!=1) printf ","; printf "\"%s\"", $1}')
+    disk_info=$(lsblk -o NAME,TYPE,SIZE | grep disk | awk 'NR>1{if (NR!=1) printf ","; printf "\"/%s\"", $1}')
     echo "["${disk_info#,}"]"
 }
 
