@@ -2,11 +2,6 @@
 
 set -x
 
-if [ -z "${BLOCK_DEVICE}" ]; then
-    echo "BLOCK_DEVICE NEEDS SETTING"
-    exit 1
-fi
-
 if [ -z "${K1_COLONY_API_URL}" ]; then
     echo "K1_COLONY_API_URL NEEDS SETTING"
     exit 1
@@ -78,7 +73,7 @@ update_hardware() {
   local response_body
 
   response=$(curl --request PUT \
-      --url "${K1_COLONY_API_URL}/api/v1/mock/hardwares/${K1_COLONY_HARDWARE_ID}" \
+      --url "${K1_COLONY_API_URL}/api/v1/hardwares/${K1_COLONY_HARDWARE_ID}" \
       --header 'Accept: application/json' \
       --header 'Content-Type: application/json' \
       --data "$body" \
@@ -88,7 +83,7 @@ update_hardware() {
   http_code=$(echo "$response" | tail -n1)
 
   echo "----------------------------"
-  echo "Server ${K1_COLONY_API_URL}/api/v1/mock/hardwares/${K1_COLONY_HARDWARE_ID}"
+  echo "Server ${K1_COLONY_API_URL}/api/v1/hardwares/${K1_COLONY_HARDWARE_ID}"
   echo "body: $body"
   echo "http_code: $http_code"
   echo "response_body: $response_body"
