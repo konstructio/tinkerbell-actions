@@ -42,6 +42,11 @@ get_interface_info() {
     echo "["${interface_info:1}"]"
 }
 
+get_ip_address() {
+    ip_address=$(hostname -i | awk '{print $1}')
+    echo "$ip_address"
+}
+
 # Main function to generate JSON output
 generate_json() {
     architecture_info=$(get_architecture_info)
@@ -49,6 +54,7 @@ generate_json() {
     mem_info=$(get_mem_info)
     disk_info=$(get_disk_info)
     interface_info=$(get_interface_info)
+    client_ip=$(get_ip_address)
 
     json_output=$(cat <<EOF
 {
@@ -56,7 +62,8 @@ generate_json() {
     "cpuCores": "$cpu_info",
     "memory": "$mem_info",
     "blockDevices": $disk_info,
-    "interfaceInfo": $interface_info
+    "interfaceInfo": $interface_info,
+    "clientIp": "$client_ip"
 }
 EOF
 )
