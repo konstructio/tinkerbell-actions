@@ -32,8 +32,8 @@ get_mem_info() {
 
 # Function to get physical disk info
 get_disk_info() {
-    disk_info=$(lsblk -dpno NAME | paste -sd, -)
-    echo "["${disk_info#,}"]"
+    disk_info=$(lsblk -dpno NAME | awk '{printf "\"%s\",", $1}' | sed 's/,$//')
+    echo "[${disk_info}]"
 }
 
 # Function to get physical interface info
