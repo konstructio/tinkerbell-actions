@@ -32,7 +32,7 @@ get_mem_info() {
 
 # Function to get physical disk info
 get_disk_info() {
-    disk_info=$(lsblk -dpno NAME | awk '{printf "\"%s\",", $1}' | sed 's/,$//')
+    disk_info=$(lsblk -dpno NAME,SIZE | awk '$2 != "0B" {print $1, $2}' | sort -k2 -rh | awk '{printf "\"%s\",", $1}' | sed 's/,$//')
     echo "[${disk_info}]"
 }
 
