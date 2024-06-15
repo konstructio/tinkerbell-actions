@@ -13,7 +13,7 @@ if [ -z "${COLONY_API_KEY}" ]; then
 fi
 
 update_hardware() {
-  output=$(./colony-scout discovery \
+  output=$(colony-scout discovery \
     --token="${COLONY_API_KEY}" \
     --hardware-id="${K1_COLONY_HARDWARE_ID}" 2>&1)
 
