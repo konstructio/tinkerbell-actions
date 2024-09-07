@@ -12,9 +12,16 @@ if [ -z "${COLONY_API_KEY}" ]; then
     exit 1
 fi
 
+if [ -z "${COLONY_API_URL}" ]; then
+    echo "COLONY_API_URL NEEDS SETTING"
+    exit 1
+fi
+
+
 update_hardware() {
   output=$(colony-scout discovery \
     --token="${COLONY_API_KEY}" \
+    --colony-api="${COLONY_API_URL}" \
     --hardware-id="${K1_COLONY_HARDWARE_ID}" 2>&1)
 
   exit_status=$?
