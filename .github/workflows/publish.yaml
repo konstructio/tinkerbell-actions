@@ -9,7 +9,6 @@ on:
       image-tag:
         description: 'The image tag to build'
         required: true
-
 jobs:
   publish_to_public_ecr:
     runs-on: ubuntu-latest
