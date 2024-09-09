@@ -1,9 +1,9 @@
 FROM alpine:3.13.1
 
-RUN apk add --no-cache util-linux curl
+RUN apk add --no-cache util-linux wget
 
 ARG COLONY_SCOUT_VERSION=0.0.10-rc11
-RUN curl -L -o colony-scout.tar.gz https://objectstore.nyc1.civo.com/konstruct-assets/colony-scout/v${COLONY_SCOUT_VERSION}/colony-scout_\ ${COLONY_SCOUT_VERSION}_Linux_x86_64.tar.gz && \
+RUN wget https://objectstore.nyc1.civo.com/konstruct-assets/colony-scout/v0.0.10-rc11/colony-scout_\ 0.0.10-rc11_Linux_x86_64.tar.gz && \
     tar -xzvf colony-scout.tar.gz && \
     chmod +x colony-scout && \
     mv colony-scout /usr/local/bin/
