@@ -47,5 +47,5 @@ jobs:
           context: "${{ github.event.inputs.image-folder }}"
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.inputs.image-folder }}:${{ github.event.inputs.image-tag }}
-          build-args:
-            - COLONY_SCOUT_VERSION: ${{ github.event.inputs.colony-scout-version}}
+          build-args: |
+            COLONY_SCOUT_VERSION: ${{ github.event.inputs.colony-scout-version}}
