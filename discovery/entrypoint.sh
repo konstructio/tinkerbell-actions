@@ -22,7 +22,8 @@ update_hardware() {
   output=$(colony-scout discovery \
     --token="${COLONY_API_KEY}" \
     --colony-api="${COLONY_API_URL}" \
-    --hardware-id="${K1_COLONY_HARDWARE_ID}" 2>&1)
+    --hardware-id="${K1_COLONY_HARDWARE_ID}" \
+    --agent-id="${COLONY_AGENT_ID}" 2>&1)
 
   exit_status=$?
 
